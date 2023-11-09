@@ -1,0 +1,74 @@
+server: #???
+    port: 7895
+
+
+spring:
+    datasource: #mysql???????
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: root
+        password: 19990629
+        url: jdbc:mysql://localhost/quareat?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowMultiQueries=true&allowPublicKeyRetrieval=true
+    data:
+        redis: #redis???????
+            host: 127.0.0.1
+            port: 6379
+            password: admin
+            jedis:
+                pool:
+                    #????????????????????
+                    max-active: 8
+                    #???????????????????????
+                    max-wait: -1
+                    #???????????
+                    max-idle: 8
+                    #???????????
+                    min-idle: 0
+                    #??????????
+            timeout: 30000
+    tengxun: #cos??
+        SecretId: AKIDieKjrrgEUTBchW4MN6Z0IK5aoHhxMZZR
+        SecretKey: f6JGxQi3D6i4C5k9HCqDKBylMOM8gz2n
+        region: ap-beijing
+        url: https://img.quareat.com
+        bucketName: quareat-1313005665
+
+
+#mybatis: #mybatis??
+#  type-aliases-package: com.qingzhou.quareat_java.pojo #??????
+#  mapper-locations: classpath:com/qingzhou/quareat_java/dao/impl/*.xml #??sql?????
+#  configuration:
+#    map-underscore-to-camel-case: true #????????
+#    #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #sql??????
+#    log-impl: com.qingzhou.saas.common.MybatisLogImpl #sql??????
+
+mybatis-flex:
+    mapper-locations:
+        - classpath*:/com/qingzhou/quareat_java/dao/impl/*.xml
+    configuration:
+        #    map-underscore-to-camel-case: true #是否开启驼峰命名
+        #    #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #sql执行打印日志
+        log-impl: com.qingzhou.quareat_java.log.MybatisLogImpl #sql执行打印日志
+app:
+    quareat:
+        jwt-secret: x1IWFzqv@zEwCVFJJz3HfG26cM#kNZg&HNTHMn1ICloPDQF*
+        aes-secret: PRQmOofmqHQioplmHmm1XwKk5V3oGrCH
+    wechat:
+        user-client:
+            appid: wxf3fe07dd9337bf8c
+            secret: 57d24c5a1dd0ca67928f3fe83af11ef8
+        merchant-client:
+            appid: wx87fdc998a4cbace5
+            secret: d1327246af787b739b0ed2ac69130bfa
+        pay:
+            base:
+                mchid: 1640014777
+                serial: 71AD08C7E4A07336AD00FAF2C4C2E80329699DED
+                api-v3-key: 8JEkGIUY5wfoAVp4VznCkUlZ9rJ7knII
+            partner:
+                mchid: 1641604918
+                serial: 41AB0D462D8A9D911146098C9524AD401B086211
+                api-v3-key: iws06vytyec155nidlcius466bufspgw
+    sms:
+        smsbao:
+            appid: roseywrong
+            token: 1fffc14b10fd4d0a8b0ee0626479e4e8
